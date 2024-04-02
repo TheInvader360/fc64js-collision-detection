@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <script src="../../node_modules/fc64js/lib/fc64.min.js"></script>
+    <script>
+      let radius = 16;
+      let collisionMode = true;
+
+      function romInit() {}
+
+      function romLoop() {
+        if (isJustPressed(BTN_A) || isJustPressed(BTN_B)) collisionMode = !collisionMode;
+        if ((isJustPressed(BTN_L) || isJustPressed(BTN_D)) && radius > 0) radius--;
+        if ((isJustPressed(BTN_R) || isJustPressed(BTN_U)) && radius < 30) radius++;
+
+        clearGfx();
+        if (collisionMode) {
+          drawCircle(32, 32, radius, COL_CYN, COL_CYN);
+          for (let py = 0; py < GFX_H; py++) {
+            for (let px = 0; px < GFX_W; px++) {
+              if (isCollidingPointCircle({ x: px, y: py }, { x: 32, y: 32, r: radius })) drawPixel(px, py, COL_RED);
+            }
+          }
+        } else {
+          for (let py = 0; py < GFX_H; py++) {
+            for (let px = 0; px < GFX_W; px++) {
+              if (isCollidingPointCircle({ x: px, y: py }, { x: 32, y: 32, r: radius })) drawPixel(px, py, COL_RED);
+            }
+          }
+          drawCircle(32, 32, radius, COL_CYN, COL_CYN);
+        }
+        drawText(0, 0, collisionMode ? 'COLL' : 'DRAW', COL_WHT);
+        drawText(0, 59, `R${radius}`, COL_WHT);
+      }
+
+      const isCollidingPointCircle = (p, c) => {
+        const x = p.x - c.x;
+        const y = p.y - c.y;
+        const r = applyRadiusModifier(c.r);
+        return (x * x) + (y * y) <= r * r;
+      }
+
+      const applyRadiusModifier = (radius) => {
+        // a rough hack to more closely (but imperfectly) match drawn circles - the collision area is either equal to or very slightly smaller than the drawn area
+        // numbers arrived at through trial and error - as low as possible (up to 4 decimal places) to achieve highest possible fill without spilling over the drawn area
+        let multiplier = 1.02;
+        if (radius <= 30) multiplier = 1.0226;
+        if (radius <= 29) multiplier = 1.0253;
+        if (radius <= 28) multiplier = 1.0302;
+        if (radius <= 27) multiplier = 1.0298;
+        if (radius <= 26) multiplier = 1.0242;
+        if (radius <= 25) multiplier = 1.0253;
+        if (radius <= 24) multiplier = 1.0291;
+        if (radius <= 23) multiplier = 1.0308;
+        if (radius <= 22) multiplier = 1.0306;
+        if (radius <= 21) multiplier = 1.0302;
+        if (radius <= 20) multiplier = 1.0405;
+        if (radius <= 19) multiplier = 1.0448;
+        if (radius <= 18) multiplier = 1.0483;
+        if (radius <= 17) multiplier = 1.0407;
+        if (radius <= 16) multiplier = 1.0346;
+        if (radius <= 15) multiplier = 1.0435;
+        if (radius <= 14) multiplier = 1.0401;
+        if (radius <= 13) multiplier = 1.0687;
+        if (radius <= 12) multiplier = 1.0672;
+        if (radius <= 11) multiplier = 1.0641;
+        if (radius <= 10) multiplier = 1.0631;
+        if (radius <=  9) multiplier = 1.0541;
+        if (radius <=  8) multiplier = 1.0753;
+        if (radius <=  7) multiplier = 1.1158;
+        if (radius <=  6) multiplier = 1.1181;
+        if (radius <=  5) multiplier = 1.1314;
+        if (radius <=  4) multiplier = 1.1181;
+        if (radius <=  3) multiplier = 1.2019;
+        if (radius <=  2) multiplier = 1.1181;
+        return radius * multiplier;
+      }
+    </script>
+  </head>
+</html>
