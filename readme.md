@@ -16,7 +16,7 @@ Each pair of shapes can be experimented with in an interactive demo, and all com
 
 ## Autoplay demo
 
-<img src="https://raw.githubusercontent.com/TheInvader360/fc64js-collision-detection/main/notes/demo-autoplay.gif" width="e 192"/>
+<img src="https://raw.githubusercontent.com/TheInvader360/fc64js-collision-detection/main/docs/demo-autoplay.gif" width="192"/>
 
 Automatically cycles through all the possible combinations of collidable shapes, randomly moving a dynamic shape around
 
@@ -26,7 +26,7 @@ Automatically cycles through all the possible combinations of collidable shapes,
 
 ## Interactive demos
 
-<img src="https://raw.githubusercontent.com/TheInvader360/fc64js-collision-detection/main/notes/demo-autoplay.gif" width="192"/>
+<img src="https://raw.githubusercontent.com/TheInvader360/fc64js-collision-detection/main/docs/demo-interactive.gif" width="192"/>
 
 * Press U/D/L/R to move the currently selected dynamic element (flashing)
 * Press A for demo specific actions - commonly used to randomise shape positions and sizes and to cycle between currently selected dynamic elements (e.g. ends of lines)
@@ -52,4 +52,4 @@ npm run build-and-preview
 ## Credits
 
 * Code by TheInvader360
-* Collision logic ported over from [this book](https://github.com/jeffThompson/CollisionDetection) by Jeff Thompson (refer to ```notes``` for changes)
+* Collision logic ported over from [this book](https://www.jeffreythompson.org/collision-detection/) by Jeff Thompson (refer to ```docs/notes.md``` for changes)

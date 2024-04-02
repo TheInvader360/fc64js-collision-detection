@@ -2,7 +2,7 @@
 
 ## Circles
 
-Circles are drawn using the [https://en.wikipedia.org/wiki/Midpoint_circle_algorithm](midpoint algorithm)
+Circles are drawn using the [midpoint algorithm](https://en.wikipedia.org/wiki/Midpoint_circle_algorithm)
 
 Point-circle collision detection calculates the distance from the centre of the circle to the given point using the pythagoras theorem - it's a collision if the calculated distance is less than or equal to the circle's radius
 
@@ -123,11 +123,11 @@ Changes from [reference](https://www.jeffreythompson.org/collision-detection/pol
 
 ## Issues along shape edges
 
-Some collision pairs will have small errors at the very edges, see ```PointLineIssue.png```, ```PointCircleIssue.png```, ```PointPolyIssue.png```, ```LineLineIssue.png```, ```LineCircleIssue.png```, ```LinePolyIssue.png```, ```CircleCircleIssue.png```, ```CircleRectIssue.png```, ```CirclePolyIssue.png```, ```RectPolyIssue.png```, and ```PolyPolyIssue.png``` in the ```notes/screenshots/``` directory for example edge cases (*ba-dum-tish* :D) where a collision towards the shape boundary is missed. This kind of thing is inevitable when dealing with collision detection, but is more apparent when working at very low resolutions. I don't think it poses a real world problem - the errors can be spotted when inspecting static images, but would not be all that apparent when playing a dynamic game
+Some collision pairs will have small errors at the very edges, see ```PointLineIssue.png```, ```PointCircleIssue.png```, ```PointPolyIssue.png```, ```LineLineIssue.png```, ```LineCircleIssue.png```, ```LinePolyIssue.png```, ```CircleCircleIssue.png```, ```CircleRectIssue.png```, ```CirclePolyIssue.png```, ```RectPolyIssue.png```, and ```PolyPolyIssue.png``` in the ```docs/screenshots/``` directory for example edge cases (*ba-dum-tish* :D) where a collision towards the shape boundary is missed. This kind of thing is inevitable when dealing with collision detection, but is more apparent when working at very low resolutions. I don't think it poses a real world problem - the errors can be spotted when inspecting static images, but would not be all that apparent when playing a dynamic game
 
 ## Screenshots
 
-Also in the ```notes/screenshots/``` directory are images illustrating:
+Also in the ```docs/screenshots/``` directory are images illustrating:
 
 * Correctly detected collisions (suffixed ```Y```)
 * Correctly handled non-collisions (suffixed ```N```)
